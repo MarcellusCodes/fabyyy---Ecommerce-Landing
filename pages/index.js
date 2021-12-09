@@ -5,11 +5,12 @@ import { changeTheme } from "../src/features/theme/themeSlice";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion, LayoutGroup } from "framer-motion";
+import { ThemeButton, PrimaryButton } from "../src/components/index";
 
 import Image from "next/image";
-import Shirt1 from "../src/static/images/shirt-1.png";
-import Shirt2 from "../src/static/images/shirt-2.png";
-import Shirt3 from "../src/static/images/shirt-3.png";
+import Shirt1 from "../src/static/images/shirt-1.webp";
+import Shirt2 from "../src/static/images/shirt-2.webp";
+import Shirt3 from "../src/static/images/shirt-3.webp";
 
 const carouselButtonContainer = {
   initial: { opacity: 0 },
@@ -117,20 +118,13 @@ export default function Home() {
         colorTheme === "light" ? "dark-preview-bg" : "light-preview-bg"
       }`}
     >
-      <motion.button
+      <ThemeButton
         onClick={() => {
           setTheme(colorTheme);
           dispatch(changeTheme());
         }}
-        className="absolute top-1 right-1 rounded-full w-12 h-12 text-light-primary bg-gradient-to-r from-light-tertiary shadow-lg to-light-quaternary dark:from-dark-tertiary dark:to-dark-quaternary font-paragraph transition-colors duration-300"
-      >
-        {colorTheme === "light" ? (
-          <FontAwesomeIcon icon={faSun} />
-        ) : (
-          <FontAwesomeIcon icon={faMoon} />
-        )}
-      </motion.button>
-      <div className="flex justify-center flex-col items-center">
+      />
+      <div className="flex justify-center flex-col items-center w-full px-6 mb-10">
         <motion.div
           initial={{
             opacity: 0,
@@ -151,7 +145,7 @@ export default function Home() {
             }`,
           }}
           transition={{ type: "spring", delay: 0.3, bounce: 0 }}
-          className="w-11/12 mt-20 sm:mt-0 sm:w-[388px] md:w-[388px] lg:w-[388px] rounded-lg bg-light-primary dark:bg-dark-quaternary py-4 px-8 flex flex-col items-center justify-between space-y-16"
+          className="w-full mt-20 sm:mt-0 sm:w-[388px] md:w-[388px] lg:w-[388px] rounded-lg bg-light-primary dark:bg-dark-quaternary py-4 px-8 flex flex-col items-center justify-between space-y-16"
         >
           <motion.h1 className="font-secondary text-2xl text-light-secondary dark:text-dark-secondary transition-colors duration-300">
             "fabyyy"
@@ -192,17 +186,7 @@ export default function Home() {
                       objectFit="cover"
                     />
                   </motion.div>
-
-                  <motion.button
-                    variants={shopButton}
-                    initial="initial"
-                    animate="animate"
-                    whileHover="hover"
-                    whileTap="tap"
-                    className="uppercase px-6 py-2 rounded-full text-light-primary bg-gradient-to-r from-light-tertiary to-light-quaternary dark:from-dark-tertiary dark:to-dark-quaternary font-paragraph transition-colors duration-300"
-                  >
-                    Shop Now
-                  </motion.button>
+                  <PrimaryButton>Show Now</PrimaryButton>
                 </>
               ))}
           </motion.div>
